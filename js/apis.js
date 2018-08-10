@@ -1,4 +1,5 @@
-var mapa // Mapa que vamos a modificar
+var mapa, // Mapa que vamos a modificar
+    nombreUbicacion;
 /* Crear la variable posicionCentral con las coordenadas donde se va a centrar el mapa */
 const posicionCentral = {lat: 24.6961343, lng: 84.98695470000007}; 
 // Inicializa el mapa con un valor de zoom y una locación en el medio
@@ -8,7 +9,7 @@ function inicializarMapa () {
     un centro igual a la variable posicionCentral. */
   mapa = new google.maps.Map(document.getElementById('map'), {
     center: posicionCentral,
-    zoom: 4
+    zoom: 18
   });
 
   geocodificadorModulo.inicializar()
