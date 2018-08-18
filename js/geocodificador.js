@@ -14,11 +14,6 @@ geocodificadorModulo = (function () {
         coordenadas = results[0].geometry.location;
         nombreUbicacion = results[0].formatted_address;
         funcionALlamar(direccion, coordenadas);
-        // circulo = new google.maps.Circle({
-        //     center: coordenadas,
-        //     radius: 20000
-        // });
-        
         }else{
         window.alert('el geocodificador tuvo un error de tipo: ' + status);
       }

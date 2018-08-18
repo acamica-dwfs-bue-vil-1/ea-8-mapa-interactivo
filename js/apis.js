@@ -1,7 +1,8 @@
-var mapa, // Mapa que vamos a modificar
-    nombreUbicacion;
+var mapa, nombreUbicacion; // Mapa que vamos a modificar
+var centroDeCirculo;
+    
 /* Crear la variable posicionCentral con las coordenadas donde se va a centrar el mapa */
-const posicionCentral = {lat: 24.6961343, lng: 84.98695470000007}; 
+const posicionCentral = {lat: -34.6140108, lng: -58.459012400000006};
 // Inicializa el mapa con un valor de zoom y una locación en el medio
 function inicializarMapa () {
     /* Modificá la variable mapa con el constructor Map().

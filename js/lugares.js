@@ -10,19 +10,24 @@ lugaresModulo = (function () {
         los límites de la búsqueda de dirección. El círculo no se debe ver en el mapa. */
     
     let centro = mapa.getCenter();
-    console.log(centro);
-    let circulo = new google.maps.Circle({
+    var circulo = new google.maps.Circle({
       center: centro,
-      radius: 20000
-      });
+      radius: 20000,
+      visible: false
+    });
+    console.log(circulo)
   //CHEQUEAR CÓMO HACER PARA METER EL CIRCULO ACÁ
-    let input = document.getElementById('direccion');
+    let input = [document.getElementById('direccion'), document.getElementById('desde'), document.getElementById('hasta'), document.getElementById('agregar')];
     let options = {
-      bounds: circulo.getBounds(),
+      strictBounds: true
     }
-    let autocompletar = new google.maps.places.Autocomplete(input, options);
+    input.forEach((e) => {
+      let autocompletar = new google.maps.places.Autocomplete(e, options);
+      // autocompletar.setOptions({strictBounds: true})
+      autocompletar.setBounds(circulo.getBounds());
+    });
+    
     // autocompletar.setBounds(circulo.getBounds());
-    autocompletar.setOptions({strictBounds: true})
   }
 
     // Inicializo la variable servicioLugares y llamo a la función autocompletar

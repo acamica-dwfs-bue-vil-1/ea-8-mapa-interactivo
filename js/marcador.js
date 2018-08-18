@@ -18,6 +18,10 @@ marcadorModulo = (function () {
       animation: google.maps.Animation.DROP,
       draggable: true
   });
+    var latLng = miMarcador.getPosition(); // returns LatLng object
+    mapa.setCenter(latLng); 
+    centroDeCirculo = latLng;
+    console.log(`la posición del marcador es: ${centroDeCirculo}`);
   }
 
     // Agrega la dirección del marcador en la lista de Lugares Intermedios

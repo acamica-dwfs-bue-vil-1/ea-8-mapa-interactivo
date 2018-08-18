@@ -93,10 +93,57 @@ direccionesModulo = (function () {
     // Calcula la ruta entre los puntos Desde y Hasta con los puntosIntermedios
     // dependiendo de la formaDeIr que puede ser Caminando, Auto o Bus/Subterraneo/Tren
   function calcularYMostrarRutas () {
+    // AGREGAR QUE TODO ESTO PASE AL HACER CLICK, MIRAR EN LA DOCUMENTACIÓN
 
         /* Completar la función calcularYMostrarRutas , que dependiendo de la forma en que el
          usuario quiere ir de un camino al otro, calcula la ruta entre esas dos posiciones
          y luego muestra la ruta. */
+    let medio, comoIr;
+    
+    mostradorDirecciones.setMap(mapa);
+
+    switch (medio) {
+      case 'Caminando':
+        comoIr = 'WALKING';
+        break;
+      case 'Auto': 
+        comoIr = 'DRIVING';
+      case 'Bus/Subterraneo/Tren': 
+        comoIr = 'TRANSIT';     
+      default:
+      comoIr = 'DRIVING';           
+        break;
+    }
+
+    var start = document.getElementById('desde').value;
+    var end = document.getElementById('hasta').value;
+    var waypts = [];    
+    medio = document.getElementById('comoIr').value;
+
+    var checkboxArray = document.getElementById('puntosIntermedios');
+    for (var i = 0; i < checkboxArray.length; i++) {
+      if (checkboxArray.options[i].selected) {
+        waypts.push({
+          location: checkboxArray[i].value,
+          stopover: true
+        });
+        console.log(waypts);
+      }
+    }
+
+    var request = {
+      origin: start,
+      destination: end,
+      travelMode: comoIr,
+      waypoints: waypts,
+      // optimizeWaypoints: true,
+    };
+
+    servicioDirecciones.route(request, function(result, status) {
+      if (status == 'OK') {
+        mostradorDirecciones.setDirections(result);
+      }
+    });
   }
 
   return {

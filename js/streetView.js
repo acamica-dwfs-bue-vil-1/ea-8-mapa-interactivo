@@ -4,7 +4,16 @@ streetViewModulo = (function () {
   function inicializar () {
         /* Completar la función inicializar()  que crea un panorama
         en una posición y lo muestra en la página. */
-
+    let posicionStreetView = mapa.getCenter();
+    panorama = new google.maps.StreetViewPanorama(
+      document.getElementById('pano'), {
+        position: posicionStreetView,
+        pov: {
+          heading: 0,
+          pitch: 0
+        }
+      });
+    mapa.setStreetView(panorama);  
   }
 
     // Actualiza la ubicación del Panorama
@@ -12,6 +21,7 @@ streetViewModulo = (function () {
         /* Completar la función fijarStreetView que actualiza la posición
          de la variable panorama y cambia el mapa de modo tal que se vea
          el streetView de la posición actual. */
+    panorama.setPosition(ubicacion); 
   }
 
   return {
