@@ -98,27 +98,30 @@ direccionesModulo = (function () {
         /* Completar la función calcularYMostrarRutas , que dependiendo de la forma en que el
          usuario quiere ir de un camino al otro, calcula la ruta entre esas dos posiciones
          y luego muestra la ruta. */
-    let medio, comoIr;
+    let medio, medioEnIngles;
     
     mostradorDirecciones.setMap(mapa);
-
+    medio = document.getElementById('comoIr').value;
+    
     switch (medio) {
       case 'Caminando':
-        comoIr = 'WALKING';
+        medioEnIngles = 'WALKING';
         break;
       case 'Auto': 
-        comoIr = 'DRIVING';
+        medioEnIngles = 'DRIVING';
+        break;        
       case 'Bus/Subterraneo/Tren': 
-        comoIr = 'TRANSIT';     
+        medioEnIngles = 'TRANSIT';     
+        break;        
       default:
-      comoIr = 'DRIVING';           
+      medioEnIngles = 'DRIVING';           
         break;
     }
+    console.log(medioEnIngles);
 
     var start = document.getElementById('desde').value;
     var end = document.getElementById('hasta').value;
     var waypts = [];    
-    medio = document.getElementById('comoIr').value;
 
     var checkboxArray = document.getElementById('puntosIntermedios');
     for (var i = 0; i < checkboxArray.length; i++) {
@@ -134,7 +137,7 @@ direccionesModulo = (function () {
     var request = {
       origin: start,
       destination: end,
-      travelMode: comoIr,
+      travelMode: medioEnIngles,
       waypoints: waypts,
       // optimizeWaypoints: true,
     };
