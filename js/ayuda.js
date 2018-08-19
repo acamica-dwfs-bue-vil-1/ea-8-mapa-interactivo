@@ -1,3 +1,15 @@
+function mostrarUbicacionActual() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var geolocation = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      marcadorModulo.mostrarMiMarcador(geolocation);
+    }); 
+  }
+}
+
 // Muestra y oculta el panorama de Street View cuando se hace clic el boton con id 'pano'
 function mostrarOcultarPano () {
   var x = document.getElementById('pano')
