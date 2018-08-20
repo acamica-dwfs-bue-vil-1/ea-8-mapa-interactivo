@@ -1,3 +1,4 @@
+//FUNCIONALIDAD EXTRA: Se agrega la ubicación actual.
 function mostrarUbicacionActual() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {

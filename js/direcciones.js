@@ -42,7 +42,6 @@ direccionesModulo = (function () {
 
     // Agrega la dirección en las listas de puntos intermedios y lo muestra con el street view
   function agregarDireccionYMostrarEnMapa (direccion, ubicacion) {
-    console.log('hasta aca ok');
     that = this
     var ubicacionTexto = ubicacion.lat() + ',' + ubicacion.lng()
     agregarDireccionEnLista(direccion, ubicacionTexto)
@@ -111,13 +110,12 @@ direccionesModulo = (function () {
         medioEnIngles = 'DRIVING';
         break;        
       case 'Bus/Subterraneo/Tren': 
-        medioEnIngles = 'TRANSIT';     
+        medioEnIngles = 'TRANSIT';    
         break;        
       default:
       medioEnIngles = 'DRIVING';           
         break;
     }
-    console.log(medioEnIngles);
 
     var start = document.getElementById('desde').value;
     var end = document.getElementById('hasta').value;
@@ -130,7 +128,6 @@ direccionesModulo = (function () {
           location: checkboxArray[i].value,
           stopover: true
         });
-        console.log(waypts);
       }
     }
 
@@ -139,12 +136,11 @@ direccionesModulo = (function () {
       destination: end,
       travelMode: medioEnIngles,
       waypoints: waypts,
-      // optimizeWaypoints: true,
     };
 
     servicioDirecciones.route(request, function(result, status) {
       if (status == 'OK') {
-        mostradorDirecciones.setDirections(result);
+        mostradorDirecciones.setDirections(result); 
       }
     });
   }

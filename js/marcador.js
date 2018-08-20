@@ -26,7 +26,6 @@ marcadorModulo = (function () {
 
     // Agrega la dirección del marcador en la lista de Lugares Intermedios
   function agregarDireccionMarcador (marcador) {
-        // console.log(marcador.getPosition().lat() + ',' + marcador.getPosition().lng());
     var marcadorLatLng = new google.maps.LatLng({ lat: marcador.getPosition().lat(), lng: marcador.getPosition().lng() })
     direccionesModulo.agregarDireccion(marcador.getTitle(), marcadorLatLng)
   }
@@ -230,7 +229,6 @@ marcadorModulo = (function () {
     // Marco los lugares cerca de mi posición
   function marcar () {
     borrarMarcadores(marcadores)
-    console.log('lugar: ' + document.getElementById('tipoDeLugar').value)
     if (marcadorModulo.existeMiMarcador()) {
       var miPosicion = marcadorModulo.damePosicion()
     } else {

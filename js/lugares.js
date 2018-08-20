@@ -50,7 +50,6 @@ lugaresModulo = (function () {
       radius: radio,
       type: [tipoDeLugar]
     };
-    console.log(request);
     servicioLugares.nearbySearch(request, marcadorModulo.marcarLugares);
   }
   return {
